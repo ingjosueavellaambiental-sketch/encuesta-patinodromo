@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Encuesta Patinódromo de Duitama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+            color: #1e2a3e;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 20px 25px 40px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #0b3b5f;
+            border-left: 6px solid #e67e22;
+            padding-left: 15px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            background: #eef2f7;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #2c3e50;
+        }
+
+        .section {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border-top: 2px solid #cbd5e1;
+            padding-top: 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #0f4c5f;
+            background: #e9f0f5;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            background: #fefefe;
+            padding: 10px 0;
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .question small {
+            font-weight: normal;
+            font-size: 0.8rem;
+            color: #5a6e7c;
+        }
+
+        .options {
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        input, select, textarea {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .grid-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 10px;
+        }
+        .grid-label {
+            width: 200px;
+            font-weight: 500;
+        }
+        .grid-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .grid-options label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        button {
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            margin-top: 20px;
+            width: 100%;
+        }
+        button:hover {
+            background: #cf711f;
+            transform: scale(0.98);
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        hr {
+            margin: 15px 0;
+        }
+        footer {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 30px;
+            color: #6c7a89;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Encuesta para la modernización del Patinódromo de Duitama</h1>
+    <div class="description">
+        <strong>Descripción:</strong><br>
+        Mi nombre es <strong>Josué Daniel Avella Camargo</strong>, profesional en Ingeniería Ambiental egresado de la Universidad Nacional Abierta y a Distancia (UNAD). Esta encuesta hace parte del curso TRABAJO DE GRADO ERSA, que actualmente estoy estudiando como desarrollo académico de la Especialización en Responsabilidad Social y Ambiental; y hace parte del proyecto “Club Deportivo de Patinaje Espartanos: liderazgo eficiente con responsabilidad social y ambiental”, desarrollado como estudiante en formación académica en la Universidad Nacional Abierta y a Distancia (UNAD). Su opinión es muy valiosa para diseñar una infraestructura deportiva moderna, inclusiva, ambientalmente sostenible y con oportunidades para el crecimiento económico de la región. La encuesta es anónima y los datos se usarán solo con fines académicos y, adicional a esto, como apoyo para hacer realidad el proyecto en marcha, con grandes avances significativos hasta el momento, del proyecto liderado por el <strong>profesor licenciado Jholman Tarazona</strong> en cuanto al mejoramiento del patinódromo de Duitama, Boyacá. Duración aproximada: 7-10 minutos. Muchas gracias.
+    </div>
+
+    <form id="surveyForm">
+        <!-- SECCIÓN A -->
+        <div class="section">
+            <div class="section-title">A. Datos generales</div>
+            <div class="question">
+                <div class="question-text">A1. ¿Usted es:</div>
+                <div class="options">
+                    <label><input type="radio" name="A1" value="Patinador(a) profesional o recreativo"> Patinador(a) profesional o recreativo</label>
+                    <label><input type="radio" name="A1" value="Entrenador(a)/monitor(a)"> Entrenador(a) / monitor(a)</label>
+                    <label><input type="radio" name="A1" value="Padre/madre de patinador"> Padre o madre de un patinador</label>
+                    <label><input type="radio" name="A1" value="Espectador(a) habitual"> Espectador(a) habitual</label>
+                    <label><input type="radio" name="A1" value="Vecino(a) de la Villa Olímpica"> Vecino(a) de la Villa Olímpica</label>
+                    <label><input type="radio" name="A1" value="Posible beneficiario(a) de programas sociales"> Posible beneficiario(a) de programas sociales (persona con discapacidad, adulto mayor, joven vulnerable)</label>
+                    <label><input type="radio" name="A1" value="Otro"> Otro: <input type="text" name="A1_otro" style="width: auto; display: inline-block; margin-left: 5px;"></label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">A2. ¿Con qué frecuencia utiliza o visita el patinódromo?</div>
+                <div class="options">
+                    <label><input type="radio" name="A2" value="Varias veces por semana"> Varias veces por semana</label>
+                    <label><input type="radio" name="A2" value="Una vez por semana"> Una vez por semana</label>
+                    <label><input type="radio" name="A2" value="Una o dos veces al mes"> Una o dos veces al mes</label>
+                    <label><input type="radio" name="A2" value="Rara vez"> Rara vez</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">A3. ¿Qué modalidad de patinaje práctica o le interesa? (puede marcar varias)</div>
+                <div class="options">
+                    <label><input type="checkbox" name="A3_velocidad" value="Patinaje de velocidad"> Patinaje de velocidad</label>
+                    <label><input type="checkbox" name="A3_artistico" value="Patinaje artístico"> Patinaje artístico</label>
+                    <label><input type="checkbox" name="A3_recreativo" value="Patinaje recreativo / paseo"> Patinaje recreativo / paseo</label>
+                    <label><input type="checkbox" name="A3_no_practico" value="No practico patinaje"> No practico patinaje</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN B -->
+        <div class="section">
+            <div class="section-title">B. Estado actual y mejoras de infraestructura</div>
+            <div class="question">
+                <div class="question-text">B1. Califique del 1 (muy malo) al 5 (muy bueno) los siguientes aspectos del patinódromo actual:</div>
+                <div id="gridB1"></div>
+            </div>
+            <div class="question">
+                <div class="question-text">B2. ¿Cuáles de los siguientes problemas ha observado usted en el patinódromo? (puede marcar varias)</div>
+                <div class="options">
+                    <label><input type="checkbox" name="B2_grietas" value="Grietas o hundimientos en la pista"> Grietas o hundimientos en la pista</label>
+                    <label><input type="checkbox" name="B2_agua" value="Agua estancada / encharcamientos cuando llueve"> Agua estancada / encharcamientos cuando llueve</label>
+                    <label><input type="checkbox" name="B2_parales" value="Postes o parales metálicos que sobresalen en la pista (obstáculos peligrosos)"> Postes o parales metálicos que sobresalen en la pista (obstáculos peligrosos)</label>
+                    <label><input type="checkbox" name="B2_malla" value="Malla central incómoda o dificulta la salida de patinadores"> Malla central incómoda o dificulta la salida de patinadores</label>
+                    <label><input type="checkbox" name="B2_graderias" value="Capacidad insuficiente de graderías"> Capacidad insuficiente de graderías</label>
+                    <label><input type="checkbox" name="B2_baños_lejanos" value="Baños lejanos (en la piscina) o en mal estado"> Baños lejanos (en la piscina) o en mal estado</label>
+                    <label><input type="checkbox" name="B2_camerinos" value="Camerinos en mal estado"> Camerinos en mal estado</label>
+                    <label><input type="checkbox" name="B2_cubierta" value="Falta de cubierta en las graderías"> Falta de cubierta en las graderías</label>
+                    <label><input type="checkbox" name="B2_iluminacion" value="Iluminación deficiente"> Iluminación deficiente</label>
+                    <label><input type="checkbox" name="B2_accesibilidad" value="Dificultades de acceso para personas con discapacidad"> Dificultades de acceso para personas con discapacidad</label>
+                    <label><input type="checkbox" name="B2_otro" value="Otro"> Otro: <input type="text" name="B2_otro_text" style="width: auto;"></label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">B3. ¿Qué mejoras considera más urgentes en el patinódromo? (puede marcar varias)</div>
+                <div class="options">
+                    <label><input type="checkbox" name="B3" value="Construir una pista nueva con estándares internacionales (World Skate)"> Construir una pista nueva con estándares internacionales (World Skate)</label>
+                    <label><input type="checkbox" name="B3" value="Reparar la pista actual (grietas, drenaje)"> Reparar la pista actual (grietas, drenaje)</label>
+                    <label><input type="checkbox" name="B3" value="Eliminar los parales y obstáculos de la pista"> Eliminar los parales y obstáculos de la pista</label>
+                    <label><input type="checkbox" name="B3" value="Ampliar las graderías"> Ampliar las graderías</label>
+                    <label><input type="checkbox" name="B3" value="Construir baños exclusivos para el patinódromo (no compartidos con la piscina)"> Construir baños exclusivos para el patinódromo (no compartidos con la piscina)</label>
+                    <label><input type="checkbox" name="B3" value="Remodelar camerinos"> Remodelar camerinos</label>
+                    <label><input type="checkbox" name="B3" value="Ampliar la cubierta techada"> Ampliar la cubierta techada</label>
+                    <label><input type="checkbox" name="B3" value="Mejorar la iluminación"> Mejorar la iluminación</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">B4. El proyecto propone construir baterías sanitarias exclusivas para el patinódromo dentro del edificio de la piscina olímpica, compartiendo la infraestructura de agua y alcantarillado pero con accesos independientes. ¿Qué opina?</div>
+                <div class="options">
+                    <label><input type="radio" name="B4" value="Me parece excelente, así los baños quedarán cerca y exclusivos"> Me parece excelente, así los baños quedarán cerca y exclusivos.</label>
+                    <label><input type="radio" name="B4" value="Es aceptable, pero preferiría baños completamente nuevos en otro lugar"> Es aceptable, pero preferiría baños completamente nuevos en otro lugar.</label>
+                    <label><input type="radio" name="B4" value="No me parece necesario, con los baños de la piscina es suficiente"> No me parece necesario, con los baños de la piscina es suficiente.</label>
+                    <label><input type="radio" name="B4" value="No sé / No opino"> No sé / No opino.</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">B5. ¿Considera que los nuevos baños deben incluir accesibilidad universal (rampas, espacio para sillas de ruedas, barras de apoyo, señalización táctil)?</div>
+                <div class="options">
+                    <label><input type="radio" name="B5" value="Sí, es indispensable"> Sí, es indispensable.</label>
+                    <label><input type="radio" name="B5" value="No es prioritario"> No es prioritario.</label>
+                    <label><input type="radio" name="B5" value="No sé"> No sé.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN C -->
+        <div class="section">
+            <div class="section-title">C. Iniciativas ambientales</div>
+            <div class="question">
+                <div class="question-text">C1. ¿Ha notado problemas ambientales en el patinódromo o la Villa Olímpica? (puede marcar varias)</div>
+                <div class="options">
+                    <label><input type="checkbox" name="C1_basuras" value="Basuras o residuos a la vista"> Basuras o residuos a la vista</label>
+                    <label><input type="checkbox" name="C1_olores" value="Malos olores (por aguas estancadas o mal drenaje)"> Malos olores (por aguas estancadas o mal drenaje)</label>
+                    <label><input type="checkbox" name="C1_visual" value="Contaminación visual (grafitis, estructuras en mal estado)"> Contaminación visual (grafitis, estructuras en mal estado)</label>
+                    <label><input type="checkbox" name="C1_ninguno" value="No he notado problemas"> No he notado problemas</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">C2. El proyecto contempla construir una Planta de Tratamiento de Aguas Residuales (PTAR) para evitar que las aguas sucias del patinódromo contaminen las quebradas o ríos cercanos. ¿Qué opina?</div>
+                <div class="options">
+                    <label><input type="radio" name="C2" value="Es muy necesario, el agua debe tratarse antes de devolverla a la naturaleza"> Es muy necesario, el agua debe tratarse antes de devolverla a la naturaleza.</label>
+                    <label><input type="radio" name="C2" value="Es importante, pero no sé si es prioritario ahora"> Es importante, pero no sé si es prioritario ahora.</label>
+                    <label><input type="radio" name="C2" value="No es necesario"> No es necesario.</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">C3. Se planea captar agua de lluvia del techo del patinódromo para almacenarla y usarla para limpieza o riego de zonas verdes, reduciendo el consumo de agua potable. ¿Le parece una buena iniciativa?</div>
+                <div class="options">
+                    <label><input type="radio" name="C3" value="Sí, es una forma de ahorrar agua y aprovechar las lluvias"> Sí, es una forma de ahorrar agua y aprovechar las lluvias.</label>
+                    <label><input type="radio" name="C3" value="No estoy seguro(a)"> No estoy seguro(a).</label>
+                    <label><input type="radio" name="C3" value="No me parece necesario"> No me parece necesario.</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">C4. ¿Apoyaría la siembra de árboles y plantas nativas (ej. aliso, arrayán, roble, chilco, salvia) alrededor del patinódromo?</div>
+                <div class="options">
+                    <label><input type="radio" name="C4" value="Sí, mejora el paisaje y el aire"> Sí, mejora el paisaje y el aire.</label>
+                    <label><input type="radio" name="C4" value="Sí, pero siempre que no interfieran con la visibilidad o la seguridad"> Sí, pero siempre que no interfieran con la visibilidad o la seguridad.</label>
+                    <label><input type="radio" name="C4" value="No me interesa"> No me interesa.</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">C5. ¿Estaría dispuesto(a) a separar los residuos (plástico, papel, orgánico, vidrio) en canecas especiales dentro del patinódromo?</div>
+                <div class="options">
+                    <label><input type="radio" name="C5" value="Sí, siempre que haya canecas claramente marcadas"> Sí, siempre que haya canecas claramente marcadas.</label>
+                    <label><input type="radio" name="C5" value="Tal vez, si me explican cómo hacerlo"> Tal vez, si me explican cómo hacerlo.</label>
+                    <label><input type="radio" name="C5" value="No"> No.</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">C6. El proyecto propone usar iluminación LED de bajo consumo para ahorrar energía. ¿Considera que esto es útil?</div>
+                <div class="options">
+                    <label><input type="radio" name="C6" value="Sí, ahorra energía y reduce costos"> Sí, ahorra energía y reduce costos.</label>
+                    <label><input type="radio" name="C6" value="No me importa el tipo de iluminación mientras se vea bien"> No me importa el tipo de iluminación mientras se vea bien.</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">C7. ¿Participaría en jornadas ambientales organizadas por el club (limpieza, reciclaje, mantenimiento de zonas verdes)?</div>
+                <div class="options">
+                    <label><input type="radio" name="C7" value="Sí, con gusto"> Sí, con gusto.</label>
+                    <label><input type="radio" name="C7" value="Tal vez, dependiendo del horario"> Tal vez, dependiendo del horario.</label>
+                    <label><input type="radio" name="C7" value="No me interesa"> No me interesa.</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">C8. En su opinión, ¿cuál de estas iniciativas ambientales es más urgente para el patinódromo? (solo una)</div>
+                <div class="options">
+                    <label><input type="radio" name="C8" value="Planta de tratamiento de aguas residuales (PTAR)"> Planta de tratamiento de aguas residuales (PTAR)</label>
+                    <label><input type="radio" name="C8" value="Captación y reúso de aguas lluvias"> Captación y reúso de aguas lluvias</label>
+                    <label><input type="radio" name="C8" value="Revegetalización con plantas nativas"> Revegetalización con plantas nativas</label>
+                    <label><input type="radio" name="C8" value="Programas de reciclaje y separación de residuos"> Programas de reciclaje y separación de residuos</label>
+                    <label><input type="radio" name="C8" value="Iluminación LED de bajo consumo"> Iluminación LED de bajo consumo</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN D -->
+        <div class="section">
+            <div class="section-title">D. Inclusión social y becas</div>
+            <div class="question">
+                <div class="question-text">D1. ¿Usted o algún familiar tiene alguna discapacidad (física, visual, cognitiva leve, etc.) que le haya impedido practicar patinaje?</div>
+                <div class="options">
+                    <label><input type="radio" name="D1" value="Si" onclick="document.getElementById('discapacidad_text').style.display='block'"> Sí, ¿cuál? <input type="text" id="discapacidad_text" name="D1_cual" style="display:none; width: 200px; margin-top: 5px;"></label>
+                    <label><input type="radio" name="D1" value="No" onclick="document.getElementById('discapacidad_text').style.display='none'"> No</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">D2. ¿Le gustaría participar en un programa gratuito o con beca de patinaje adaptado / inclusivo?</div>
+                <div class="options"><label><input type="radio" name="D2" value="Sí"> Sí</label><label><input type="radio" name="D2" value="No"> No</label></div>
+            </div>
+            <div class="question">
+                <div class="question-text">D3. En su opinión, ¿cuál es la principal barrera para que personas con discapacidad o de bajos recursos accedan al patinaje? (puede marcar varias)</div>
+                <div class="options">
+                    <label><input type="checkbox" name="D3_costo" value="Costo de patines y equipos de protección"> Costo de patines y equipos de protección</label>
+                    <label><input type="checkbox" name="D3_instructores" value="Falta de instructores capacitados en inclusión"> Falta de instructores capacitados en inclusión</label>
+                    <label><input type="checkbox" name="D3_instalaciones" value="Instalaciones no adaptadas (rampas, baños, accesos)"> Instalaciones no adaptadas (rampas, baños, accesos)</label>
+                    <label><input type="checkbox" name="D3_desconocimiento" value="Desconocimiento o miedo"> Desconocimiento o miedo</label>
+                    <label><input type="checkbox" name="D3_programas" value="No hay programas específicos"> No hay programas específicos</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">D4. ¿Apoyaría la creación de un programa de becas deportivas para jóvenes de escasos recursos?</div>
+                <div class="options"><label><input type="radio" name="D4" value="Sí"> Sí</label><label><input type="radio" name="D4" value="No"> No</label></div>
+            </div>
+            <div class="question">
+                <div class="question-text">D5. ¿Qué edad tienen los posibles beneficiarios que usted conoce? (puede marcar varias)</div>
+                <div class="options">
+                    <label><input type="checkbox" name="D5_niños" value="Niños (menos de 12 años)"> Niños (menos de 12 años)</label>
+                    <label><input type="checkbox" name="D5_adolescentes" value="Adolescentes (12-17 años)"> Adolescentes (12-17 años)</label>
+                    <label><input type="checkbox" name="D5_jovenes" value="Jóvenes (18-28 años)"> Jóvenes (18-28 años)</label>
+                    <label><input type="checkbox" name="D5_adultos" value="Adultos mayores (60+ años)"> Adultos mayores (60+ años)</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN E -->
+        <div class="section">
+            <div class="section-title">E. Gestión y organización del club (para entrenadores y directivos)</div>
+            <div class="question">
+                <div class="question-text">E1. ¿El club cuenta con procedimientos escritos para: (puede marcar varias)</div>
+                <div class="options">
+                    <label><input type="checkbox" name="E1_inscripcion" value="Inscripción y manejo de atletas"> Inscripción y manejo de atletas</label>
+                    <label><input type="checkbox" name="E1_emergencias" value="Manejo de emergencias y primeros auxilios"> Manejo de emergencias y primeros auxilios</label>
+                    <label><input type="checkbox" name="E1_mantenimiento" value="Mantenimiento de la pista e instalaciones"> Mantenimiento de la pista e instalaciones</label>
+                    <label><input type="checkbox" name="E1_satisfaccion" value="Evaluación de satisfacción de usuarios"> Evaluación de satisfacción de usuarios</label>
+                    <label><input type="checkbox" name="E1_ninguno" value="Ninguno de los anteriores"> Ninguno de los anteriores</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">E2. ¿Ha recibido capacitación en temas de: (puede marcar varias)</div>
+                <div class="options">
+                    <label><input type="checkbox" name="E2_seguridad" value="Seguridad y prevención de accidentes"> Seguridad y prevención de accidentes</label>
+                    <label><input type="checkbox" name="E2_primeros" value="Primeros auxilios"> Primeros auxilios</label>
+                    <label><input type="checkbox" name="E2_inclusion" value="Inclusión de personas con discapacidad"> Inclusión de personas con discapacidad</label>
+                    <label><input type="checkbox" name="E2_ambiental" value="Gestión ambiental (reciclaje, ahorro de agua)"> Gestión ambiental (reciclaje, ahorro de agua)</label>
+                    <label><input type="checkbox" name="E2_ninguna" value="No he recibido capacitación"> No he recibido capacitación</label>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-text">E3. ¿Considera que implementar un Sistema de Gestión con normas ISO (calidad, ambiente, seguridad) beneficiaría al club?</div>
+                <div class="options">
+                    <label><input type="radio" name="E3" value="Sí"> Sí</label>
+                    <label><input type="radio" name="E3" value="No"> No</label>
+                    <label><input type="radio" name="E3" value="No sé"> No sé</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN F -->
+        <div class="section">
+            <div class="section-title">F. Comentarios finales</div>
+            <div class="question">
+                <div class="question-text">F1. ¿Qué otra sugerencia o comentario le gustaría hacer para mejorar el patinódromo o los programas del club? (puede mencionar infraestructura, baños, ambiente, inclusión, gestión, etc.)</div>
+                <textarea name="F1_comentarios" rows="4" style="width:100%"></textarea>
+            </div>
+        </div>
+
+        <button type="button" onclick="submitForm()">Enviar encuesta</button>
+        <div id="statusMessage" class="status"></div>
+    </form>
+    <footer>Universidad Nacional Abierta y a Distancia (UNAD) - Trabajo de Grado ERSA</footer>
+</div>
+
+<script>
+    // Generar la cuadrícula de B1
+    const aspectos = [
+        "Estado de la pista (superficie, grietas)",
+        "Drenaje (encharcamientos después de lluvia)",
+        "Graderías (comodidad, capacidad)",
+        "Cubierta (protección contra sol/lluvia)",
+        "Baños actuales (los de la piscina, lejanos y compartidos)",
+        "Camerinos y vestuarios",
+        "Iluminación para entrenar o competir de noche",
+        "Accesos y parqueaderos"
+    ];
+    const gridContainer = document.getElementById("gridB1");
+    aspectos.forEach((asp, idx) => {
+        const div = document.createElement("div");
+        div.className = "grid-row";
+        div.innerHTML = `<span class="grid-label">${asp}</span><div class="grid-options">
+            ${[1,2,3,4,5].map(v => `<label><input type="radio" name="B1_${idx}" value="${v}"> ${v}</label>`).join('')}
+        </div>`;
+        gridContainer.appendChild(div);
+    });
+
+    // Mostrar campo de texto para discapacidad
+    document.querySelectorAll('input[name="D1"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const textField = document.getElementById('discapacidad_text');
+            if (this.value === 'Si') textField.style.display = 'inline-block';
+            else textField.style.display = 'none';
+        });
+    });
+
+    // Función de envío
+    function submitForm() {
+        const form = document.getElementById('surveyForm');
+        const formData = new FormData(form);
+        let data = {};
+        for (let [key, val] of formData.entries()) {
+            if (data[key]) {
+                if (!Array.isArray(data[key])) data[key] = [data[key]];
+                data[key].push(val);
+            } else data[key] = val;
+        }
+        // Añadir B1 (calificaciones)
+        for (let i = 0; i < aspectos.length; i++) {
+            const radio = document.querySelector(`input[name="B1_${i}"]:checked`);
+            data[`B1_${aspectos[i]}`] = radio ? radio.value : '';
+        }
+        // Añadir otros campos
+        const A1_otro = document.querySelector('input[name="A1_otro"]');
+        if (A1_otro && A1_otro.value.trim()) data['A1_otro_detalle'] = A1_otro.value;
+        const discText = document.getElementById('discapacidad_text');
+        if (discText && discText.value.trim()) data['D1_cual'] = discText.value;
+        
+        const statusDiv = document.getElementById('statusMessage');
+        statusDiv.className = 'status';
+        statusDiv.style.display = 'block';
+        statusDiv.textContent = 'Enviando...';
+        
+        // === REEMPLAZAR CON SU URL DE GOOGLE APPS SCRIPT ===
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyx5lAMg4lZkut7wYTK1MvgdXRDlKN82HF03J_obQyln05ek0c6he6uhcP2p8IYfK1aTg/exec';
+        
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: new URLSearchParams(data).toString()
+        }).then(() => {
+            statusDiv.className = 'status success';
+            statusDiv.textContent = '¡Encuesta enviada con éxito! Muchas gracias.';
+            form.reset();
+            // limpiar B1 radios
+            for (let i = 0; i < aspectos.length; i++) {
+                document.querySelectorAll(`input[name="B1_${i}"]`).forEach(r => r.checked = false);
+            }
+            document.getElementById('discapacidad_text').style.display = 'none';
+            document.getElementById('discapacidad_text').value = '';
+        }).catch(error => {
+            statusDiv.className = 'status error';
+            statusDiv.textContent = 'Error al enviar. Intente de nuevo más tarde.';
+            console.error(error);
+        });
+    }
+</script>
+</body>
+</html>
